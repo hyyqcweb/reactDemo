@@ -39,6 +39,16 @@ export default class Comment extends Component{
         }
     }
 
+    _getProcessedContent(content) {
+        return content
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#039;")
+            .replace(/`([\S\s]+?)`/g, '<code>$1</code>')
+    }
+
     render() {
         const {username, content} = this.props.comment;
         const {timeString} = this.state;
@@ -47,7 +57,9 @@ export default class Comment extends Component{
                 <div className='comment-user'>
                     <span>{username}</span>:
                 </div>
-                <p>{content}</p>
+                <p dangerouslySetInnerHTML={{
+                    __html: this._getProcessedContent(content)
+                }}/>
                 <span className='comment-createdtime'>
                     {timeString}
                 </span>
