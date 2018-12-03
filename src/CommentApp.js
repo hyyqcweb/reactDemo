@@ -10,7 +10,8 @@ class CommentApp extends Component {
         this.state = {
             comments : []
         };
-        this.handleSubmitApp = this.handleSubmitApp.bind(this)
+        this.handleSubmitApp = this.handleSubmitApp.bind(this);
+        this.handleDeleteComment = this.handleDeleteComment.bind(this);
     }
 
     componentDidMount() {
@@ -40,11 +41,21 @@ class CommentApp extends Component {
         this._saveComments(comments);
     }
 
+    handleDeleteComment(index) {
+        const {comments} = this.state;
+        comments.splice(index, 1);
+        this.setState({comments});
+        this._saveComments(comments)
+    }
+
     render() {
         return (
-            <div className="wrapper">
+            <div className='wrapper'>
                 <CommentInput onSubmit={this.handleSubmitApp}/>
-                <CommentList comments={this.state.comments}/>
+                <CommentList
+                    comments={this.state.comments}
+                    onDeleteComment={this.handleDeleteComment}
+                />
                 <Clock />
             </div>
         );

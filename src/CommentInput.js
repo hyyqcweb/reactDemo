@@ -70,21 +70,21 @@ export default class CommentInput extends Component{
 
     render() {
         return (
-            <div className="comment-input">
-                <div className="comment-field">
-                    <span className="comment-field-name">用户名: </span>
-                    <div className="comment-field-input">
+            <div className='comment-input'>
+                <div className='comment-field'>
+                    <span className='comment-field-name'>用户名: </span>
+                    <div className='comment-field-input'>
                         <input
-                            type="text"
+                            type='text'
                             value={this.state.username}
                             onBlur={this.handleUsernameBlur}
                             onChange={this.handleUsernameChange}
                         />
                     </div>
                 </div>
-                <div className="comment-field">
-                    <span className="comment-field-name">评论内容: </span>
-                    <div className="comment-field-input">
+                <div className='comment-field'>
+                    <span className='comment-field-name'>评论内容: </span>
+                    <div className='comment-field-input'>
                         <textarea
                             ref={(text) => this.text = text}
                             value={this.state.content}
@@ -92,7 +92,7 @@ export default class CommentInput extends Component{
                         />
                     </div>
                 </div>
-                <div className="comment-field-button">
+                <div className='comment-field-button'>
                     <button onClick={this.handleSubmit}>发布</button>
                 </div>
             </div>

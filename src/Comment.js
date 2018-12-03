@@ -3,12 +3,15 @@ import PropTypes from 'prop-types';
 
 export default class Comment extends Component{
     static propTypes = {
-        comment: PropTypes.object.isRequired
+        comment: PropTypes.object.isRequired,
+        onDeleteComment: PropTypes.func,
+        index: PropTypes.number
     };
 
     constructor(props) {
         super(props);
-        this.state = {timeString: ''}
+        this.state = {timeString: ''};
+        this.handleDeleteComment = this.handleDeleteComment.bind(this);
     }
 
     componentDidMount() {
@@ -30,17 +33,29 @@ export default class Comment extends Component{
         })
     }
 
+    handleDeleteComment() {
+        if (this.props.onDeleteComment) {
+            this.props.onDeleteComment(this.props.index)
+        }
+    }
+
     render() {
         const {username, content} = this.props.comment;
         const {timeString} = this.state;
         return (
             <div className='comment'>
-                <div className="comment-user">
+                <div className='comment-user'>
                     <span>{username}</span>:
                 </div>
                 <p>{content}</p>
                 <span className='comment-createdtime'>
                     {timeString}
+                </span>
+                <span
+                    className='comment-delete'
+                    onClick={this.handleDeleteComment}
+                >
+                    删除
                 </span>
             </div>
         )
