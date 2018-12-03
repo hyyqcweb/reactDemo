@@ -9,22 +9,41 @@ class CommentApp extends Component {
         super(props);
         this.state = {
             comments : []
+        };
+        this.handleSubmitApp = this.handleSubmitApp.bind(this)
+    }
+
+    componentDidMount() {
+        this._loadComments();
+    }
+
+    // 持久化评论
+    _loadComments() {
+        let comments = localStorage.getItem('comments');
+        if (comments) {
+            comments = JSON.parse(comments);
+            this.setState({comments})
         }
     }
+
+    _saveComments(comments) {
+        localStorage.setItem('comments', JSON.stringify(comments))
+    }
+
     handleSubmitApp(comment) {
         if (!comment) return;
         if (!comment.username) return alert('请输入用户名');
         if (!comment.content) return alert('请输入评论内容');
-        this.state.comments.push(comment);
-        this.setState({
-            comments: this.state.comments
-        });
+        const {comments} = this.state;
+        comments.push(comment);
+        this.setState({comments});
+        this._saveComments(comments);
     }
 
     render() {
         return (
             <div className="wrapper">
-                <CommentInput onSubmit={this.handleSubmitApp.bind(this)}/>
+                <CommentInput onSubmit={this.handleSubmitApp}/>
                 <CommentList comments={this.state.comments}/>
                 <Clock />
             </div>
