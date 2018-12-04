@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import CommentInput from './CommentInput';
 import CommentList from './CommentList';
-import {Clock} from './components';
+import {Clock} from '../components/index';
 import './index.css';
 
 class CommentApp extends Component {

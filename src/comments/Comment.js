@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {Utils} from './components';
+import {Utils} from '../components/index';
 
 export default class Comment extends Component{
     static propTypes = {
