@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import TimeAgo from './utils';
+import {Utils} from './components';
 
 export default class Comment extends Component{
     static propTypes = {
@@ -27,7 +27,7 @@ export default class Comment extends Component{
     _updateTimeString() {
         const comment = this.props.comment;
         this.setState({
-            timeString: TimeAgo(comment.createdTime)
+            timeString: Utils(comment.createdTime)
         });
     }
 

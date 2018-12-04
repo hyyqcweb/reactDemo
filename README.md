@@ -24,3 +24,7 @@ react将组件渲染, 并且构造DOM元素然后塞入页面的过程称为组�
     componentDidMount()
 ```
 
+###### Higher Order Components
+
+**高阶组件就是一个函数, 传给它一个组件, 它返回一个新的组件**
+
