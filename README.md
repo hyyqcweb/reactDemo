@@ -1,3 +1,4 @@
+# This is a front-end world :satisfied::satisfied::satisfied:  
 ###### 状态提升
 
 当某个状态被多个组件依赖或者影响的时候, 就把该状态提升到这些组件最近的公共父组件中去管理, 
